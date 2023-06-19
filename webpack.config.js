@@ -1,18 +1,18 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: {
-    bundle: path.resolve(__dirname, "src/index.js"),
+    bundle: path.resolve(__dirname, 'src/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      directory: path.resolve(__dirname, 'dist'),
     },
     port: 3000,
     open: true,
@@ -24,14 +24,14 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Leaderboard",
-      template: path.resolve(__dirname, "src/index.html"),
+      title: 'Leaderboard',
+      template: path.resolve(__dirname, 'src/index.html'),
     }),
   ],
 };
