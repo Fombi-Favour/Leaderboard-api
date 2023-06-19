@@ -71,7 +71,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link. Click here!](https://fombi-favour.github.io/To-Do-list/dist)
+- [Live Demo Link. Click here!](https://fombi-favour.github.io/Leaderboard-api/dist)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
