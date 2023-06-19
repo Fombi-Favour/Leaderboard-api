@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "KG Miss Kindy Chunky", sans-serif;
+}
+
+.content {
+  padding: 20px;
+}
+
+.title {
+  padding: 20px 80px;
+}
+
+.content-col {
+  display: flex;
+  padding: 10px 42px;
+  justify-content: space-around;
+}
+
+.recent-row {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.btn-refresh {
+  width: 94px;
+  height: 30px;
+  padding: 3px 0;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 3px 3px;
+  border: 3px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.recent-list {
+  list-style: none;
+  width: 460px;
+  padding: 0;
+  border: 3px solid #000;
+}
+
+.list-item {
+  padding: 8px 14px;
+}
+
+.recent-list li:nth-child(2n) {
+  background-color: rgba(137, 137, 138, 0.5);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 18px;
+}
+
+.input-col {
+  width: 365px;
+  height: 42px;
+  font-size: 17px;
+  font-weight: 200;
+  padding: 0 10px;
+  border: 3px solid;
+  outline: none;
+}
+
+.input-col::placeholder {
+  font-weight: 600;
+  color: #000;
+}
+
+.action {
+  width: 74px;
+  height: 28px;
+}
