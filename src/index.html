@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.cdnfonts.com/css/kg-miss-kindy-bubble"
+      rel="stylesheet"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <main class="content">
+      <div class="title">
+        <h1>Leaderboard</h1>
+      </div>
+      <div class="content-col">
+        <!-- recent -->
+        <div class="recent">
+          <div class="recent-row">
+            <h3>Recent scores</h3>
+            <button type="button" id="refresh" class="btn-refresh">
+              Refresh
+            </button>
+          </div>
+          <ul class="recent-list"></ul>
+        </div>
+        <!-- add your scores -->
+        <div class="insert-score">
+          <h3>Add your score</h3>
+          <form id="forms">
+            <input
+              type="text"
+              class="input-col"
+              name="name"
+              id="name"
+              placeholder="Your name"
+            />
+            <input
+              type="number"
+              class="input-col"
+              name="score"
+              id="score"
+              placeholder="Your score"
+            />
+            <button type="submit" class="btn-refresh action">Submit</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
