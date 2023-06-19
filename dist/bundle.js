@@ -126,7 +126,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _listStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listStorage.js */ \"./src/listStorage.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n_listStorage_js__WEBPACK_IMPORTED_MODULE_0__();\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _listStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listStorage.js */ \"./src/listStorage.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n(0,_listStorage_js__WEBPACK_IMPORTED_MODULE_0__.displayScore)();\n\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
 
 /***/ }),
 
@@ -136,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _lis
   \****************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("const scoreList = [\n  { name: 'john', score: 100 },\n  { name: 'jane', score: 200 },\n  { name: 'jack', score: 300 },\n  { name: 'jill', score: 400 },\n  { name: 'mary', score: 500 },\n  { name: 'peter', score: 600 },\n  { name: 'peter', score: 700 },\n  { name: 'peter', score: 800 },\n  { name: 'peter', score: 900 },\n];\n\nconst recentList = document.querySelector('.recent-list');\n\nconst displayScore = () => {\n  scoreList.forEach((score) => {\n    recentList.innerHTML += `<li class=\"list-item\">${score.name}: ${score.score}</li>`;\n  });\n};\nexports.displayScore = displayScore;\n\n//# sourceURL=webpack://leaderboard-api/./src/listStorage.js?");
+eval("const scoreList = [\n  { name: 'john', score: 100 },\n  { name: 'jane', score: 200 },\n  { name: 'jack', score: 300 },\n  { name: 'jill', score: 400 },\n  { name: 'mary', score: 500 },\n  { name: 'peter', score: 600 },\n  { name: 'peter', score: 700 },\n  { name: 'peter', score: 800 },\n  { name: 'peter', score: 900 },\n];\n\nconst recentList = document.querySelector('.recent-list');\n\nconst displayScore = () => {\n  scoreList.forEach((score) => {\n    recentList.innerHTML += `<li class=\"list-item\">${score.name}: ${score.score}</li>`;\n  });\n};\n\nexports.displayScore = displayScore;\n\n//# sourceURL=webpack://leaderboard-api/./src/listStorage.js?");
 
 /***/ })
 
