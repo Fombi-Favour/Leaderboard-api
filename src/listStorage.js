@@ -17,4 +17,5 @@ const displayScore = () => {
     recentList.innerHTML += `<li class="list-item">${score.name}: ${score.score}</li>`;
   });
 };
+
 exports.displayScore = displayScore;
