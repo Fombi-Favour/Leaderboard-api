@@ -1,31 +1,43 @@
 const recentList = document.querySelector('.recent-list');
 const apiBaseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const idURL = 'Zl4d7IVkemOTTVg2fUdz/';
+const idURL = 'BUOIgYkttZc70qv998Ig/';
 
-const scoreList = [];
+let scoreList = [];
 
 const getScore = async () => {
-  const response = await fetch(`${apiBaseURL}${idURL}scores/`)
-    .then((res) => res.json)
-    .then((data) => data.result)
-    .catch(() => 'error');
-  return response;
+  const response = await fetch(`${apiBaseURL}${idURL}scores/`);
+
+  const userData = response.json();
+  return userData;
+};
+
+const displayScore = () => {
+  getScore().then((res) => {
+    if (typeof res === 'object') {
+      scoreList = Array.from(res);
+      recentList.innerHTML = '';
+      if (scoreList.length > 0) {
+        scoreList.forEach((score) => {
+          recentList.innerHTML += `<li class="list-item">${score.name}: ${score.score}</li>`;
+        });
+      }
+    }
+  });
 };
 
 const addScore = async (data) => {
-  const response = await fetch(`${apiBaseURL}${idURL}scores/`, {
+  await fetch(`${apiBaseURL}${idURL}scores/`, {
     method: 'POST',
+    body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
-  });
-
-  const res = await response.json();
-  return res;
+  }).then((response) => response.json());
 };
 
 exports.addScore = addScore;
+exports.getScore = getScore;
+exports.displayScore = displayScore;
 
 // const scoreList = [
 //   { name: 'john', score: 100 },
