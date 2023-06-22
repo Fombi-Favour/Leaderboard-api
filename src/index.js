@@ -1,4 +1,2 @@
-import { displayScore } from './listStorage.js';
+import './listStorage.js';
 import './style.css';
-
-displayScore();
