@@ -126,7 +126,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _listStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listStorage.js */ \"./src/listStorage.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n(0,_listStorage_js__WEBPACK_IMPORTED_MODULE_0__.displayScore)();\n\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _listStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listStorage.js */ \"./src/listStorage.js\");\n/* harmony import */ var _listStorage_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_listStorage_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
 
 /***/ }),
 
@@ -134,9 +134,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _lis
 /*!****************************!*\
   !*** ./src/listStorage.js ***!
   \****************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (() => {
 
-eval("const scoreList = [\n  { name: 'john', score: 100 },\n  { name: 'jane', score: 200 },\n  { name: 'jack', score: 300 },\n  { name: 'jill', score: 400 },\n  { name: 'mary', score: 500 },\n  { name: 'peter', score: 600 },\n  { name: 'peter', score: 700 },\n  { name: 'peter', score: 800 },\n  { name: 'peter', score: 900 },\n];\n\nconst recentList = document.querySelector('.recent-list');\n\nconst displayScore = () => {\n  scoreList.forEach((score) => {\n    recentList.innerHTML += `<li class=\"list-item\">${score.name}: ${score.score}</li>`;\n  });\n};\n\nexports.displayScore = displayScore;\n\n//# sourceURL=webpack://leaderboard-api/./src/listStorage.js?");
+eval("const apiBaseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/j7q3bFnlZmGFgxFRypCD/scores';\nconst recentList = document.querySelector('.recent-list');\n\nconst displayScore = (scores) => {\n  scores.forEach((score) => {\n    recentList.innerHTML += `<li class=\"list-item\">${score.user}: ${score.score}</li>`;\n  });\n};\n\nconst getScores = async () => {\n  const response = await fetch(apiBaseUrl);\n  const score = (await response.json()).result;\n\n  displayScore(score);\n};\n\nconst refresh = async () => {\n  recentList.innerHTML = '';\n  await getScores();\n};\n\nconst refreshBtn = document.getElementById('refresh');\nrefreshBtn.addEventListener('click', async () => {\n  await refresh();\n});\n\nconst postScores = async (name, scores) => {\n  const response = await fetch(apiBaseUrl, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({\n      user: name,\n      score: scores,\n    }),\n  });\n\n  const res = await response.json();\n  return res;\n};\n\nconst submitScores = () => {\n  const forms = document.querySelector('#forms');\n  const names = document.querySelector('#names');\n  const scores = document.querySelector('#scores');\n\n  forms.addEventListener('submit', async (e) => {\n    e.preventDefault();\n    const userName = names.value;\n    const userScore = scores.value;\n    if (names.value.length > 0 && scores.value.length > 0) {\n      await postScores(userName, userScore);\n      forms.reset();\n    }\n  });\n};\n\nsubmitScores();\n\n//# sourceURL=webpack://leaderboard-api/./src/listStorage.js?");
 
 /***/ })
 
