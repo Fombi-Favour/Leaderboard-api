@@ -1,60 +1,57 @@
+const apiBaseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/j7q3bFnlZmGFgxFRypCD/scores';
 const recentList = document.querySelector('.recent-list');
-const apiBaseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const idURL = 'BUOIgYkttZc70qv998Ig/';
 
-let scoreList = [];
-
-const getScore = async () => {
-  const response = await fetch(`${apiBaseURL}${idURL}scores/`);
-
-  const userData = response.json();
-  return userData;
+const displayScore = (scores) => {
+  scores.forEach((score) => {
+    recentList.innerHTML += `<li class="list-item">${score.user}: ${score.score}</li>`;
+  });
 };
 
-const displayScore = () => {
-  getScore().then((res) => {
-    if (typeof res === 'object') {
-      scoreList = Array.from(res);
-      recentList.innerHTML = '';
-      if (scoreList.length > 0) {
-        scoreList.forEach((score) => {
-          recentList.innerHTML += `<li class="list-item">${score.name}: ${score.score}</li>`;
-        });
-      }
+const getScores = async () => {
+  const response = await fetch(apiBaseUrl);
+  const score = (await response.json()).result;
+
+  displayScore(score);
+};
+
+const refresh = async () => {
+  recentList.innerHTML = '';
+  await getScores();
+};
+
+const refreshBtn = document.getElementById('refresh');
+refreshBtn.addEventListener('click', async () => {
+  await refresh();
+});
+
+const postScores = async (name, scores) => {
+  const response = await fetch(apiBaseUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      user: name,
+      score: scores,
+    }),
+  });
+
+  const res = await response.json();
+  return res;
+};
+
+const submitScores = () => {
+  const forms = document.querySelector('#forms');
+  const names = document.querySelector('#names');
+  const scores = document.querySelector('#scores');
+
+  forms.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const userName = names.value;
+    const userScore = scores.value;
+    if (names.value.length > 0 && scores.value.length > 0) {
+      await postScores(userName, userScore);
+      forms.reset();
     }
   });
 };
 
-const addScore = async (data) => {
-  await fetch(`${apiBaseURL}${idURL}scores/`, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then((response) => response.json());
-};
-
-exports.addScore = addScore;
-exports.getScore = getScore;
-exports.displayScore = displayScore;
-
-// const scoreList = [
-//   { name: 'john', score: 100 },
-//   { name: 'jane', score: 200 },
-//   { name: 'jack', score: 300 },
-//   { name: 'jill', score: 400 },
-//   { name: 'mary', score: 500 },
-//   { name: 'peter', score: 600 },
-//   { name: 'peter', score: 700 },
-//   { name: 'peter', score: 800 },
-//   { name: 'peter', score: 900 },
-// ];
-
-// const displayScore = () => {
-//   scoreList.forEach((score) => {
-//     recentList.innerHTML += `<li class="list-item">${score.name}: ${score.score}</li>`;
-//   });
-// };
-
-// exports.displayScore = displayScore;
+submitScores();
