@@ -5,23 +5,22 @@ body {
   font-family: "KG Miss Kindy Chunky", sans-serif;
 }
 
-.content {
-  padding: 20px;
-}
-
 .title {
-  padding: 20px 80px;
+  text-align: center;
 }
 
 .content-col {
   display: flex;
-  padding: 10px 42px;
-  justify-content: space-around;
+  flex-direction: column-reverse;
+  padding: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .recent-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 21px;
 }
 
@@ -39,7 +38,6 @@ body {
 
 .recent-list {
   list-style: none;
-  width: 460px;
   padding: 0;
   border: 3px solid #000;
 }
@@ -60,7 +58,6 @@ form {
 }
 
 .input-col {
-  width: 365px;
   height: 42px;
   font-size: 17px;
   font-weight: 200;
@@ -77,4 +74,35 @@ form {
 .action {
   width: 74px;
   height: 28px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .content {
+    padding: 20px;
+  }
+
+  .title {
+    padding: 20px 80px;
+    text-align: left;
+  }
+
+  .content-col {
+    flex-direction: row;
+    padding: 10px 42px;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 13px;
+  }
+
+  .recent-row {
+    justify-content: start;
+  }
+
+  .recent-list {
+    width: 460px;
+  }
+
+  .input-col {
+    width: 365px;
+  }
 }
