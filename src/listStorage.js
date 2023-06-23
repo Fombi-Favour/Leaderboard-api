@@ -14,6 +14,8 @@ const getScores = async () => {
   displayScore(score);
 };
 
+getScores();
+
 const refresh = async () => {
   recentList.innerHTML = '';
   await getScores();
