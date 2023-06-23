@@ -10,7 +10,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     clean: true,
-    assetModuleFileName: '[name][ext]',
   },
   devServer: {
     static: {
