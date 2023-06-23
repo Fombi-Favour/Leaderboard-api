@@ -1,20 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "KG Miss Kindy Chunky", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  background: url(./assets/bg-all.webp) no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .title {
   text-align: center;
+  padding: 50px 0;
+}
+
+.title h1 {
+  color: #fffffff5;
+  font-size: 40px;
+  letter-spacing: 0.01em;
 }
 
 .content-col {
   display: flex;
   flex-direction: column-reverse;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  border-radius: 20px;
   padding: 10px;
   gap: 12px;
   align-items: center;
+}
+
+.recent {
+  border-top: 2px dotted #000;
 }
 
 .recent-row {
@@ -24,30 +43,52 @@ body {
   gap: 21px;
 }
 
+h3 {
+  color: #3f66ff;
+  font-size: 22px;
+  font-weight: 700;
+}
+
 .btn-refresh {
   width: 94px;
   height: 30px;
   padding: 3px 0;
   font-size: 16px;
   font-weight: 600;
-  box-shadow: 3px 3px;
-  border: 3px solid #000;
-  background-color: #fff;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  background-color: #8ec5fc;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn-refresh:hover {
+  background-color: #0092f3;
+  transition: 0.4s;
 }
 
 .recent-list {
   list-style: none;
   padding: 0;
-  border: 3px solid #000;
+  border: 3px solid #064ab1;
+  overflow-y: scroll;
+}
+
+.recent-list::-webkit-scrollbar {
+  display: none;
 }
 
 .list-item {
   padding: 8px 14px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .recent-list li:nth-child(2n) {
-  background-color: rgba(137, 137, 138, 0.5);
+  background-color: #0c56df80;
 }
 
 form {
@@ -62,13 +103,14 @@ form {
   font-size: 17px;
   font-weight: 200;
   padding: 0 10px;
-  border: 3px solid;
+  border: 2px solid #0092f3;
+  border-radius: 12px;
   outline: none;
 }
 
 .input-col::placeholder {
   font-weight: 600;
-  color: #000;
+  color: #5c5a5a;
 }
 
 .action {
@@ -76,6 +118,35 @@ form {
   height: 28px;
 }
 
+.submit-msg {
+  font-size: 18px;
+  font-weight: 600;
+  color: #05b42b;
+}
+
+.active {
+  color: #ff1717;
+}
+
+/* =========== Tablet view ============= */
+@media only screen and (min-width: 768px) {
+  .title h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .content-col {
+    border-radius: 16px 120px;
+    margin: 14px 0;
+  }
+
+  .input-col {
+    width: 365px;
+  }
+}
+
+/* =========== Desktop view ============= */
 @media only screen and (min-width: 1024px) {
   .content {
     padding: 20px;
@@ -94,15 +165,15 @@ form {
     gap: 13px;
   }
 
+  .recent {
+    border: none;
+  }
+
   .recent-row {
     justify-content: start;
   }
 
   .recent-list {
     width: 460px;
-  }
-
-  .input-col {
-    width: 365px;
   }
 }
