@@ -71,6 +71,7 @@ h3 {
 
 .recent-list {
   list-style: none;
+  height: 300px;
   padding: 0;
   border: 3px solid #064ab1;
   overflow-y: scroll;
