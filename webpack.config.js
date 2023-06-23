@@ -9,6 +9,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    clean: true,
+    assetModuleFileName: '[name][ext]',
   },
   devServer: {
     static: {
@@ -23,6 +25,10 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|jpeg)$/i,
+        type: 'asset/resource',
       },
     ],
   },
