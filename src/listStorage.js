@@ -14,6 +14,8 @@ const getScores = async () => {
   displayScore(score);
 };
 
+getScores();
+
 const refresh = async () => {
   recentList.innerHTML = '';
   await getScores();
@@ -42,6 +44,7 @@ const submitScores = () => {
   const forms = document.querySelector('#forms');
   const names = document.querySelector('#names');
   const scores = document.querySelector('#scores');
+  const msg = document.querySelector('.submit-msg');
 
   forms.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -49,7 +52,16 @@ const submitScores = () => {
     const userScore = scores.value;
     if (names.value.length > 0 && scores.value.length > 0) {
       await postScores(userName, userScore);
-      forms.reset();
+      // forms.reset();
+      setTimeout(() => {
+        msg.innerHTML = ' ✔✔ Succesfully Added!!!';
+        forms.reset();
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        msg.innerHTML = ' ❌❌ Invalid Data!!!';
+        msg.classList.add('active');
+      }, 2000);
     }
   });
 };
